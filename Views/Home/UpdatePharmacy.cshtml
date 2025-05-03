@@ -1,0 +1,114 @@
+﻿@model SPC_Server.Models.Pharmacy
+
+@{
+    ViewBag.Title = "UpdatePharmacy";
+}
+
+<h2 class="text-primary text-center mb-5"><i class="fas fa-clinic-medical"></i> Update Pharmacy</h2>
+
+<div class="container">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4 class="mb-4">Pharmacy Information</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.PharmacyID)
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.PharmacyName, "Pharmacy Name", htmlAttributes: new { @class = "control-label text-secondary" })
+                        @Html.EditorFor(model => model.PharmacyName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.PharmacyName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.PharmacyType, "Pharmacy Type", htmlAttributes: new { @class = "control-label text-secondary" })
+                        @Html.EditorFor(model => model.PharmacyType, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.PharmacyType, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Password, "Password", htmlAttributes: new { @class = "control-label text-secondary" })
+                        @Html.PasswordFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Address, "Address", htmlAttributes: new { @class = "control-label text-secondary" })
+                        @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ContactEmail, "Contact Email", htmlAttributes: new { @class = "control-label text-secondary" })
+                        @Html.EditorFor(model => model.ContactEmail, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ContactEmail, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ContactPhone, "Contact Phone", htmlAttributes: new { @class = "control-label text-secondary" })
+                        @Html.EditorFor(model => model.ContactPhone, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ContactPhone, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-flex flex-column align-items-center mt-5">
+                <button type="submit" class="btn btn-primary mb-2 w-100">
+                    <i class="fas fa-save"></i> Save Changes
+                </button>
+                @Html.ActionLink("Back to List", "GetPharmacy", null, new { @class = "btn btn-secondary w-100" })
+            </div>
+        </div>
+    }
+</div>
+
+<style>
+    .container {
+        max-width: 800px;
+        margin: auto;
+        padding: 20px;
+        background: #f9f9f9;
+        border-radius: 8px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .btn {
+        padding: 10px 20px;
+    }
+
+    .text-primary {
+        color: #007bff;
+    }
+
+    .text-secondary {
+        color: #6c757d;
+    }
+
+    .text-danger {
+        color: #dc3545;
+    }
+
+    .fa-clinic-medical {
+        margin-right: 10px;
+    }
+</style>

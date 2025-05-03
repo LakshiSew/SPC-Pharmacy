@@ -1,0 +1,202 @@
+﻿@{
+    ViewBag.Title = "Dashboard";
+}
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f6f9;
+        background-image: url('https://yt3.googleusercontent.com/fl0c7zpEQB2yfdCoq-U-JHaGC8_Rb3LCEDsBJ8Uv0hU8-KgVHkSYBnNyyA8a51Mpv_mK2Jlmnw=s900-c-k-c0x00ffffff-no-rj'); /* Replace with your background image URL */
+        background-size: 50% auto; /* Adjust the size of the background image (50% of the width) */
+        background-position: 60% center;
+        background-attachment: fixed;
+        background-repeat: no-repeat; /* Prevent the background image from repeating */
+    }
+
+
+    .success-message {
+        color: green;
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    .error-message {
+        color: red;
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    .topbar {
+        background-color: rgba(52, 58, 64, 0.8); /* Semi-transparent for better visibility */
+        color: #fff;
+        padding: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+
+        .topbar h3 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        .topbar div {
+            font-size: 16px;
+        }
+
+    .content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-top: 30px;
+        color: #fff;
+    }
+
+    .about-section {
+        background-color: rgba(255, 255, 255, 0.9); /* Slight transparency */
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        margin-bottom: 30px;
+        width: 80%;
+        max-width: 900px;
+    }
+
+        .about-section h2 {
+            font-size: 28px;
+            font-weight: bold;
+            color: #343a40;
+        }
+
+        .about-section p {
+            font-size: 18px;
+            color: #333;
+            line-height: 1.6;
+            margin-top: 20px;
+        }
+
+    .highlight {
+        color: #007bff;
+        font-weight: bold;
+    }
+
+    .stat-section {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        width: 100%;
+    }
+
+    .stat-card {
+        background-color: rgba(255, 255, 255, 0.9); /* Slight transparency */
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        margin: 10px;
+        width: 45%;
+        text-align: center;
+        transition: transform 0.3s ease;
+    }
+
+        .stat-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .stat-card h4 {
+            font-size: 24px;
+            font-weight: bold;
+            color: #343a40;
+        }
+
+        .stat-card p {
+            font-size: 20px;
+            color: #007bff;
+            margin-top: 10px;
+        }
+
+    /* Responsive design */
+    media (max-width: 768px) {
+        .stat-card
+
+    {
+        width: 100%;
+    }
+    }
+</style>
+
+<div class="topbar">
+    <h3>Admin Dashboard</h3>
+    <div>
+        <span>Welcome, Admin</span>
+    </div>
+</div>
+
+<!-- Display success message if TempData has it -->
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show text-center" role="alert">
+        <i class="fas fa-check-circle"></i> @TempData["SuccessMessage"]
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+}
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger alert-dismissible fade show text-center" role="alert">
+        <i class="fas fa-exclamation-circle"></i> @TempData["ErrorMessage"]
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+}
+
+
+<div class="content">
+    <!-- About SPC Section -->
+    <div class="about-section">
+        <h2>About State Pharmaceutical Corporation (SPC)</h2>
+        <p>
+            The <span class="highlight">State Pharmaceutical Corporation (SPC)</span> is the leading government body responsible for ensuring the
+            availability and accessibility of quality pharmaceutical products across the nation. SPC plays a vital role in supplying both essential and
+            specialized medicines to various sectors, including healthcare providers, hospitals, and pharmacies.
+        </p>
+        <p>
+            Established under the Ministry of Health, SPC works closely with local and international suppliers, ensuring that the nation’s healthcare sector
+            receives the required medicines at affordable prices. With a mission to improve public health, SPC is committed to facilitating better access
+            to safe, high-quality drugs.
+        </p>
+        <p>
+            SPC’s operations are governed by transparency, integrity, and commitment to excellence, with continuous efforts to enhance its services
+            and foster partnerships with global suppliers for the benefit of the country's health system.
+        </p>
+
+
+        <h2>Admin Role & Responsibilities</h2>
+        <p>
+            As an <span class="highlight">Admin</span> at SPC, you are responsible for overseeing various administrative functions, such as managing
+            suppliers, processing tenders, handling orders, and ensuring the seamless operation of the SPC platform. Your role directly contributes to
+            the effective distribution of pharmaceutical products across the nation.
+        </p>
+        <p>
+            Your main tasks include monitoring inventory, reviewing tender proposals, and ensuring the timely fulfillment of orders. The Admin dashboard
+            provides real-time data to help make informed decisions, improve efficiency, and ensure that SPC continues to serve the public's healthcare needs.
+        </p>
+
+
+    </div>
+
+    <!-- Admin Specific Section -->
+    <!-- Key Statistics Section -->
+
+
+</div>

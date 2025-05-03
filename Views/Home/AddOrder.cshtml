@@ -1,0 +1,76 @@
+﻿@model SPC_Pharmacy.Models.OrderViewModel
+
+@{
+    ViewBag.Title = "Add Order";
+}
+
+@using (Html.BeginForm("CreateOrder", "Home", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+
+
+
+    <div class="container mt-4" style="max-width: 800px; margin: 0 auto; margin-top: 60px !important;">
+        <div class="card shadow-lg">
+            <div class="card-header bg-primary text-white">
+                <h4 class="mb-0 text-center">Add Order</h4>
+            </div>
+            <div class="card-body">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => model.OrderID, new { @class = "form-label" })
+                        @Html.EditorFor(model => model.OrderID, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.OrderID, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => model.PharmacyName, new { @class = "form-label" })
+                        @Html.EditorFor(model => model.PharmacyName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.PharmacyName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => model.DrugName, new { @class = "form-label" })
+                        @Html.EditorFor(model => model.DrugName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.DrugName, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => model.Quantity, new { @class = "form-label" })
+                        @Html.EditorFor(model => model.Quantity, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Quantity, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => model.OrderDate, new { @class = "form-label" })
+                        @Html.EditorFor(model => model.OrderDate, new { htmlAttributes = new { @class = "form-control", type = "date" } })
+                        @Html.ValidationMessageFor(model => model.OrderDate, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => model.Status, new { @class = "form-label" })
+                        <input type="text" class="form-control" value="Pending" readonly />
+                        @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+                    </div>
+
+                </div>
+
+                <div class="d-flex justify-content-between mt-4">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                    @Html.ActionLink("Back to List", "Home", null, new { @class = "btn btn-secondary" })
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

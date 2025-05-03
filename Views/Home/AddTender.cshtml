@@ -1,0 +1,95 @@
+﻿@model SPC_Admin.Models.AddTenderViewModel
+
+@{
+    ViewBag.Title = "Add Tender";
+}
+
+<h2 class="text-primary text-center mb-5"><i class="fas fa-file-contract"></i> Add New Tender</h2>
+
+<div class="container">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>Tender Information</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.TenderID, "Tender ID", htmlAttributes: new { @class = "control-label text-secondary" })
+                        @Html.EditorFor(model => model.TenderID, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.TenderID, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.DrugName, "Drug Name", htmlAttributes: new { @class = "control-label text-secondary" })
+                        @Html.DropDownListFor(model => model.DrugName, new SelectList(Model.Drugs, "DrugName", "DrugName"), "Select a drug", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.DrugName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.QuantityRequired, "Quantity Required", htmlAttributes: new { @class = "control-label text-secondary" })
+                        @Html.EditorFor(model => model.QuantityRequired, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.QuantityRequired, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ClosingDate, "Closing Date", htmlAttributes: new { @class = "control-label text-secondary" })
+                        @Html.TextBoxFor(model => model.ClosingDate, new { @class = "form-control", type = "date" })
+                        @Html.ValidationMessageFor(model => model.ClosingDate, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+
+   
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Status, "Status", htmlAttributes: new { @class = "control-label text-secondary" })
+                        @Html.EditorFor(model => model.Status, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+                    </div>
+
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ActionDate, "Create Date", htmlAttributes: new { @class = "control-label text-secondary" })
+                        @Html.TextBoxFor(model => model.ActionDate, new { @class = "form-control", type = "date" })
+                        @Html.ValidationMessageFor(model => model.ActionDate, "", new { @class = "text-danger" })
+                    </div>
+               
+            
+
+            <div class="d-flex flex-column align-items-center mt-5">
+                <button type="submit" class="btn btn-primary mb-2 w-100">Create</button>
+                @Html.ActionLink("Back to List", "GetStocks", null, new { @class = "btn btn-secondary w-100" })
+            </div>
+        </div>
+    }
+</div>
+
+<style>
+    .container {
+        max-width: 700px;
+        margin: auto;
+        padding: 20px;
+        background: #f9f9f9;
+        border-radius: 8px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .btn {
+        padding: 10px 20px;
+    }
+</style>

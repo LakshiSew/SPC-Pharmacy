@@ -1,0 +1,58 @@
+﻿@model IEnumerable<SPC_Server.Models.StockUpdate>
+
+@{
+    ViewBag.Title = "GetStocks";
+}
+
+<h2 class="text-center mb-3 text-info">Stock List</h2>
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h5 class="text-secondary">Stock Inventory</h5>
+    <a href="@Url.Action("AddTender", "Home")" class="btn btn-primary">
+        <i class="fas fa-plus-circle"></i> Add New Tender
+    </a>
+</div>
+
+<!-- Search Box -->
+<div class="mb-3">
+    @using (Html.BeginForm("GetStocks", "Home", FormMethod.Get, new { @class = "form-inline" }))
+    {
+        <div class="input-group">
+            <input type="text" name="searchTerm" class="form-control" placeholder="Search by Drug Name" value="@ViewBag.SearchTerm" />
+            <div class="input-group-append">
+                <button type="submit" class="btn btn-info">
+                    <i class="fas fa-search"></i> Search
+                </button>
+            </div>
+        </div>
+    }
+</div>
+
+<table class="table table-striped table-bordered">
+    <thead class="bg-info text-white">
+        <tr>
+            <th>Stock ID</th>
+            <th>Drug Name</th>
+            <th>Current Qty</th>
+            <th>Price per unit</th>
+            <th>Manufacturing date</th>
+            <th>Expiry Date</th>
+            <th>Update Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.StockUpdateID)</td>
+                <td>@Html.DisplayFor(modelItem => item.DrugName)</td>
+                <td>@Html.DisplayFor(modelItem => item.CurrentQty)</td>
+                <td>@Html.DisplayFor(modelItem => item.PricePerUnit)</td>
+                <td>@item.ManufactureDate.ToString("yyyy-MM-dd")</td>
+                <td>@item.ExpiryDate.ToString("yyyy-MM-dd")</td>
+                <td>@item.UpdateDate</td>
+            
+            </tr>
+        }
+    </tbody>
+</table>

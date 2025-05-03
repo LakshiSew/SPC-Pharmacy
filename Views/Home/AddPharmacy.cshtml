@@ -1,0 +1,68 @@
+﻿@model SPC_Server.Models.Pharmacy
+
+@{
+    ViewBag.Title = "AddPharmacy";
+}
+
+<h2 class="mb-4">Add Pharmacy</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="card shadow p-4">
+        <h4 class="mb-3">Pharmacy Details</h4>
+        <hr />
+
+        @Html.ValidationSummary(true, "", new { @class = "alert alert-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PharmacyID, new { @class = "control-label" })
+            @Html.TextBoxFor(model => model.PharmacyID, new { @class = "form-control", placeholder = "Enter Pharmacy ID" })
+            @Html.ValidationMessageFor(model => model.PharmacyID, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PharmacyName, new { @class = "control-label" })
+            @Html.TextBoxFor(model => model.PharmacyName, new { @class = "form-control", placeholder = "Enter Pharmacy Name" })
+            @Html.ValidationMessageFor(model => model.PharmacyName, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PharmacyType, new { @class = "control-label" })
+            @Html.DropDownListFor(model => model.PharmacyType,
+                new SelectList(new[] { "SPC-Owned", "Linked" }),
+                "Select Pharmacy Type", new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.PharmacyType, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Password, new { @class = "control-label" })
+            @Html.PasswordFor(model => model.Password, new { @class = "form-control", placeholder = "Enter Password" })
+            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Address, new { @class = "control-label" })
+            @Html.TextBoxFor(model => model.Address, new { @class = "form-control", placeholder = "Enter Address" })
+            @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ContactEmail, new { @class = "control-label" })
+            @Html.TextBoxFor(model => model.ContactEmail, new { @class = "form-control", placeholder = "Enter Email", type = "email" })
+            @Html.ValidationMessageFor(model => model.ContactEmail, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ContactPhone, new { @class = "control-label" })
+            @Html.TextBoxFor(model => model.ContactPhone, new { @class = "form-control", placeholder = "Enter Phone Number", type = "tel" })
+            @Html.ValidationMessageFor(model => model.ContactPhone, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group text-center mt-3">
+            <button type="submit" class="btn btn-primary px-4">Create</button>
+            @Html.ActionLink("Back to List", "GetPharmacy", null, new { @class = "btn btn-secondary ml-2" })
+        </div>
+    </div>
+}

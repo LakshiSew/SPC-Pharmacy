@@ -1,0 +1,231 @@
+﻿
+@{
+    ViewBag.Title = "About SPC";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7f6;
+            margin: 0;
+            padding: 0;
+        }
+
+        .about-section {
+            background-color: #ffffff;
+            padding: 60px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 30px 0;
+        }
+
+        .about-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #007bff;
+            font-weight: bold;
+            margin-bottom: 40px;
+        }
+
+        .about-description {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #333;
+            text-align: center;
+        }
+
+        .vision-mission {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 40px;
+            padding: 20px 0;
+        }
+
+            .vision-mission div {
+                width: 45%;
+                padding: 15px;
+                background-color: #f9f9f9;
+                border-radius: 8px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            }
+
+            .vision-mission h3 {
+                font-size: 1.6rem;
+                color: #007bff;
+                margin-bottom: 10px;
+            }
+
+            .vision-mission p {
+                font-size: 1.1rem;
+                color: #333;
+            }
+
+        /* Image container to hold both images */
+        .image-container {
+            display: flex;
+            justify-content: center; /* Center align the images */
+            gap: 20px; /* Space between the images */
+            margin-top: 30px;
+        }
+
+        /* Style for the first image */
+        .small-image {
+            width: 100%;
+            max-width: 300px; /* Adjust the size of the first image */
+            border-radius: 8px;
+            transition: transform 0.3s;
+        }
+
+            .small-image:hover {
+                transform: scale(1.05); /* Hover effect */
+            }
+
+        /* Style for the second image */
+        .second-image {
+            width: 100%;
+            max-width: 300px; /* Adjust the size of the second image */
+            border-radius: 8px;
+            transition: transform 0.3s;
+        }
+
+            .second-image:hover {
+                transform: scale(1.05); /* Hover effect */
+            }
+
+
+        .history-section {
+            margin-top: 60px;
+            background-color: #f8f9fa;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+            .history-section h3 {
+                text-align: center;
+                font-size: 2rem;
+                color: #007bff;
+                margin-bottom: 30px;
+            }
+
+            .history-section p {
+                font-size: 1.2rem;
+                color: #555;
+                line-height: 1.6;
+                text-align: center;
+            }
+
+        .values-section {
+            background-color: #007bff;
+            color: white;
+            padding: 50px 0;
+            margin-top: 60px;
+        }
+
+            .values-section h3 {
+                text-align: center;
+                font-size: 2rem;
+                margin-bottom: 30px;
+            }
+
+            .values-section ul {
+                list-style-type: none;
+                padding: 0;
+                text-align: center; /* Align the items in the center */
+                margin: 0;
+            }
+
+                .values-section ul li {
+                    font-size: 1.2rem;
+                    margin-bottom: 10px;
+                }
+
+        .footer-section {
+            text-align: center;
+            margin-top: 60px;
+            padding: 30px 0;
+            background-color: #f8f9fa;
+        }
+
+            .footer-section p {
+                color: #333;
+                font-size: 1rem;
+            }
+    </style>
+</head>
+<body>
+
+    <div class="container about-section">
+        <div class="about-title">
+            <h1>About State Pharmaceutical Corporation (SPC)</h1>
+        </div>
+
+        <div class="about-description">
+            <p>The State Pharmaceutical Corporation (SPC) is the government body responsible for managing the procurement, distribution, and supply of pharmaceuticals across Sri Lanka. SPC works to ensure the availability of safe and effective medicines, promoting public health across the nation.</p>
+        </div>
+
+        <div class="vision-mission">
+            <div class="vision">
+                <h3>Vision</h3>
+                <p>To be the leading supplier of quality pharmaceutical products for the well-being of the nation.</p>
+            </div>
+            <div class="mission">
+                <h3>Mission</h3>
+                <p>To ensure the availability of safe, effective, and affordable pharmaceuticals through continuous collaboration and innovation.</p>
+            </div>
+        </div>
+
+        <div class="container about-image">
+            <div class="image-container">
+                <!-- First image -->
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTkOhqneXX6vRD_5oK2uuM5Ego00wo7yaB9w&s" alt="SPC Image" class="img-fluid small-image">
+
+                <!-- Second image -->
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZQcLH-S0N0epIwJymqrAZWauUTZqk5RrGlZ5_t4JzTelQ3dPRyZEhkQqiDVmla6H2eng&usqp=CAU" alt="SPC Image 2" class="img-fluid small-image second-image">
+            </div>
+        </div>
+
+
+
+
+    </div>
+
+    <div class="container history-section">
+        <h3>History of SPC</h3>
+        <p>The SPC was established to streamline the distribution of essential pharmaceuticals across Sri Lanka. Over the years, SPC has expanded its role in the country’s pharmaceutical industry, ensuring that the public receives high-quality and affordable medicines. SPC continues to collaborate with international and local suppliers to improve the healthcare sector.</p>
+    </div>
+
+    <div class="container values-section">
+        <h3>Our Values</h3>
+        <ul class="text-center">
+            <li>Integrity in all our operations</li>
+            <li>Commitment to public health</li>
+            <li>Ensuring quality and safety in all pharmaceuticals</li>
+            <li>Collaboration with global and local partners</li>
+            <li>Innovation in the pharmaceutical industry</li>
+        </ul>
+    </div>
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
+
+
+
+
+

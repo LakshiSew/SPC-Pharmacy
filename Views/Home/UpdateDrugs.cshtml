@@ -1,0 +1,102 @@
+﻿@model SPC_Server.Models.Drug
+
+@{
+    ViewBag.Title = "UpdateDrugs";
+}
+
+<h2 class="text-primary text-center mb-5"><i class="fas fa-pills"></i> Update Drug</h2>
+
+<div class="container">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>Drug Information</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.DrugID)
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.DrugName, "Drug Name", htmlAttributes: new { @class = "control-label text-secondary" })
+                        @Html.EditorFor(model => model.DrugName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.DrugName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.PricePerUnit, "Price Per Unit", htmlAttributes: new { @class = "control-label text-secondary" })
+                        @Html.TextBoxFor(model => model.PricePerUnit, new { @class = "form-control", @readonly = "readonly" })
+                        @Html.ValidationMessageFor(model => model.PricePerUnit, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.PurchesedStock, "Purchased Stock", htmlAttributes: new { @class = "control-label text-secondary" })
+                        @Html.EditorFor(model => model.PurchesedStock, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.PurchesedStock, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ManufactureDate, "Manufacture Date", htmlAttributes: new { @class = "control-label text-secondary" })
+                        @Html.TextBoxFor(model => model.ManufactureDate, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date", @readonly = "readonly" })
+                        @Html.ValidationMessageFor(model => model.ManufactureDate, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ExpiryDate, "Expiry Date", htmlAttributes: new { @class = "control-label text-secondary" })
+                @Html.TextBoxFor(model => model.ExpiryDate, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date", @readonly = "readonly" })
+                @Html.ValidationMessageFor(model => model.ExpiryDate, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="d-flex flex-column align-items-center mt-5">
+                <button type="submit" class="btn btn-primary mb-2 w-100">Save Changes</button>
+                @Html.ActionLink("Back to List", "GetDrugs", null, new { @class = "btn btn-secondary w-100" })
+            </div>
+        </div>
+    }
+</div>
+
+
+<style>
+    .container {
+        max-width: 700px;
+        margin: auto;
+        padding: 20px;
+        background: #f9f9f9;
+        border-radius: 8px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .btn {
+        padding: 10px 20px;
+    }
+
+    .ml-2 {
+        margin-left: 10px;
+    }
+
+    .text-primary {
+        color: #007bff;
+    }
+
+    .text-secondary {
+        color: #6c757d;
+    }
+
+    .text-danger {
+        color: #dc3545;
+    }
+</style>

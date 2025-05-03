@@ -1,0 +1,120 @@
+﻿@model SPC_Admin.Models.UpdateStockViewModel
+
+@{
+    ViewBag.Title = "EditStockManufac";
+    Layout = "~/Views/Shared/_Layout3.cshtml";
+}
+
+<h2 class="text-primary text-center mb-5"><i class="fas fa-pills"></i> Edit Stock</h2>
+
+<div class="container">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>Update Stock Information</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="row">
+                <!-- Stock Update ID (Read-Only) -->
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.StockUpdateID, "Stock Update ID", htmlAttributes: new { @class = "control-label text-secondary" })
+                        @Html.EditorFor(model => model.StockUpdateID, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } }) <!-- Read-only -->
+                        @Html.ValidationMessageFor(model => model.StockUpdateID, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <!-- Drug Name (Read-Only) -->
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.DrugName, "Drug Name", htmlAttributes: new { @class = "control-label text-secondary" })
+                        @Html.EditorFor(model => model.DrugName, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } }) <!-- Read-only -->
+                        @Html.ValidationMessageFor(model => model.DrugName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <!-- Price Per Unit (Read-Only) -->
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.PricePerUnit, "Price Per Unit", htmlAttributes: new { @class = "control-label text-secondary" })
+                        <!-- Hidden field to pass the value back to the controller -->
+                        @Html.HiddenFor(model => model.PricePerUnit)
+                        <input type="text" value="@Model.PricePerUnit" class="form-control" readonly />
+                        @Html.ValidationMessageFor(model => model.PricePerUnit, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <!-- Manufacture Date (Read-Only) -->
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ManufactureDate, "Manufacture Date", htmlAttributes: new { @class = "control-label text-secondary" })
+                        <!-- Hidden field to pass the value back to the controller -->
+                        @Html.HiddenFor(model => model.ManufactureDate)
+                        <input type="date" value="@Model.ManufactureDate.ToString("yyyy-MM-dd")" class="form-control" readonly />
+                        @Html.ValidationMessageFor(model => model.ManufactureDate, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <!-- Expiry Date (Read-Only) -->
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ExpiryDate, "Expiry Date", htmlAttributes: new { @class = "control-label text-secondary" })
+                        <!-- Hidden field to pass the value back to the controller -->
+                        @Html.HiddenFor(model => model.ExpiryDate)
+                        <input type="date" value="@Model.ExpiryDate.ToString("yyyy-MM-dd")" class="form-control" readonly />
+                        @Html.ValidationMessageFor(model => model.ExpiryDate, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <!-- Editable fields (e.g., Current Quantity) -->
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.CurrentQty, "Current Quantity", htmlAttributes: new { @class = "control-label text-secondary" })
+                    @Html.EditorFor(model => model.CurrentQty, new { htmlAttributes = new { @class = "form-control" } }) <!-- Editable -->
+                    @Html.ValidationMessageFor(model => model.CurrentQty, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <!-- Update Date -->
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.UpdateDate, "Update Date", htmlAttributes: new { @class = "control-label text-secondary" })
+                    @Html.EditorFor(model => model.UpdateDate, new { htmlAttributes = new { @class = "form-control", type = "date" } }) <!-- Read-only -->
+                    @Html.ValidationMessageFor(model => model.UpdateDate, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="d-flex flex-column align-items-center mt-5">
+                <button type="submit" class="btn btn-primary mb-2 w-100">Save</button>
+                @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-secondary w-100" })
+            </div>
+        </div>
+    }
+</div>
+
+<style>
+    .container {
+        max-width: 700px;
+        margin: auto;
+        padding: 20px;
+        background: #f9f9f9;
+        border-radius: 8px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .btn {
+        padding: 10px 20px;
+    }
+
+    .ml-2 {
+        margin-left: 10px;
+    }
+</style>
